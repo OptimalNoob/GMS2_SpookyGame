@@ -3,6 +3,7 @@ function main_init() {
 #region GLOBAL VARIABLES
 	if(!instance_exists(obj_shell)) instance_create_depth(0, 0, 0, obj_shell);
 	global.PlayerInventory = ds_grid_create(2, 0);
+	// Objective Columns: Item Name, Item Count, Status Flag, Description
 	global.PlayerObjectives = ds_grid_create(4, 0);
 	global.WindowW = 1280;
 	global.WindowH = 720;
