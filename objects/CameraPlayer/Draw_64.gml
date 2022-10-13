@@ -6,23 +6,15 @@ var gridw = ds_grid_width(global.PlayerObjectives);
 var guiw = display_get_gui_width();
 var guih = display_get_gui_height();
 var l_space = 24;
-var w_space = 32;
 var margin = 16;
-
 draw_set_text(fntDev01, fa_left, fa_center, c_white, 1.0);
-var font_size = font_get_size(draw_get_font());
 
-var xx = 0; var yy = 0;
-repeat(gridh) {
-	xx = 0;
-	repeat(gridw){
-		var word_w = string_width(string(global.PlayerObjectives[# xx,yy]));
-		sdm(word_w);
-		draw_text(margin + (word_w + w_space), margin + (l_space * yy), string(global.PlayerObjectives[# xx,yy]));
-		xx++;
-	}
-	yy++;
-}
+if(keyboard_check_pressed(ord("1"))) dev_objective_sel_page = max(0, --dev_objective_sel_page);
+if(keyboard_check_pressed(ord("2"))) dev_objective_sel_page = min(gridh - 1, ++dev_objective_sel_page);
 
-
-
+draw_text(margin, display_get_gui_height() - margin, keyboard_lastkey);
+draw_text(margin, margin, "Page: " + string(dev_objective_sel_page + 1) + " of " + string(gridh));
+draw_text(margin, margin + l_space, string(global.PlayerObjectives[# 0, dev_objective_sel_page]));
+draw_text(margin, margin + (l_space * 2), string(global.PlayerObjectives[# 1, dev_objective_sel_page]));
+draw_text(margin, margin + (l_space * 3), string(global.PlayerObjectives[# 2, dev_objective_sel_page]));
+draw_text(margin, margin + (l_space * 4), string(global.PlayerObjectives[# 3, dev_objective_sel_page]));

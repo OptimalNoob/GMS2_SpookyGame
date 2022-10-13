@@ -1,7 +1,7 @@
 /// @desc description
 
 input = new InputListener();
-
+dev_objective_sel_page = 0;
 scale = 1;
 win_w = global.WindowW;
 win_h = global.WindowH;
